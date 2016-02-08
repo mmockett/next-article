@@ -18,7 +18,7 @@
 						<div class="article__header-primary">
 							<p class="article__primary-theme">
 								{{#with primaryTag}}
-								<a href="/stream/{{taxonomy}}Id/{{id}}" class="c-topic c-topic--medium c-topic--with-follow c-topic--link" data-trackable="section-link" aria-label="posted in category {{name}}" data-concept-id="{{id}}">{{name}}</a>
+								<a href="/stream/{{taxonomy}}Id/{{id}}" class="n-content-tag n-content-tag--medium n-content-tag--with-follow" data-trackable="section-link" aria-label="posted in category {{name}}" data-concept-id="{{id}}">{{name}}</a>
 								{{/with}}
 							</p>
 							<h1 class="article__title">{{title}}</h1>
@@ -41,12 +41,12 @@
 						</div>
 					</header>
 				</div>
-				<aside class="article__tags" data-o-grid-colspan="hide L3 Loffset1" role="complementary">
-					<h3 class="article__tags__title">Topics mentioned in this podcast</h3>
-					<ul class="article__tags-list" data-trackable="tags">
+				<aside class="n-content-tags__wrapper" data-o-grid-colspan="hide L3 Loffset1" role="complementary">
+					<h3 class="n-content-tags__title">Topics mentioned in this podcast</h3>
+					<ul class="n-content-tags__list" data-trackable="tags">
 						{{#each tags}}
-						<li class="article__tag">
-							<a class="c-topic c-topic--link c-topic--list" href="{{url}}" data-trackable="tag" data-concept-id="{{id}}">{{prefLabel}}</a>
+						<li>
+							<a class="n-content-tag" href="{{url}}" data-trackable="tag" data-concept-id="{{id}}">{{prefLabel}}</a>
 						</li>
 						{{/each}}
 					</ul>
@@ -67,7 +67,7 @@
 					</audio>
 					{{/with}}
 				</div>
-				<div class="article__body">
+				<div class="article__body Wn-content-body">
 					{{{body}}}
 					<p>
 						{{#if externalLinks}}

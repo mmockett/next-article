@@ -1,35 +1,35 @@
 
 <div
 	role="region"
-	class="article-tags c-box u-border--all"
+	class="n-content-box n-content-u-border--all"
 	data-trackable="mentions"
 	aria-labelledby="my-ft-title">
-	<div class="c-box__title u-margin--bottom-none">
-		<h3 class="c-box__title-text u-background-color--page">
-			<i class="c-myft-logo"></i>
+	<div class="n-content-box__title n-content-u-margin--bottom-none">
+		<h3 class="n-content-box__title-text n-content-u-background-color--page">
+			<i class="article__myft-logo"></i>
 			<span class="n-util-visually-hidden">myFT</span>
 		</h3>
 	</div>
-	<div class="article-tags__intro">
+	<div class="n-content-tags__intro">
 		<p>Follow the topics mentioned in this article</p>
 	</div>
-	<ul class="article-tags__tags">
+	<ul class="n-content-tags__list--myft">
 		{{#each tags}}
-		<li class="article-tags__tag">
+		<li class="n-content-tag__list-item--with-follow">
 			<a
 				href="{{url}}"
 				data-trackable="tag"
-				class="c-topic c-topic--with-follow c-topic--link">{{name}}</a>
+				class="n-content-tag n-content-tag--with-follow">{{name}}</a>
 			{{#if @root.flags.myFtApi}}
 			{{>next-myft-ui/templates/follow version='3' conceptId=id}}
 			{{/if}}
 		</li>
 		{{/each}}
 	</ul>
-	<div class="article-tags__product-tour">
+	<div class="n-content-tags__product-tour">
 		<a
 			href="/myft/product-tour"
 			data-trackable="myFT-product-tour"
-			class="article-tags__product-tour--link">Take a tour of <i>my</i>FT</a>
+			class="n-content-tags__product-tour-link">Take a tour of <i>my</i>FT</a>
 	</div>
 </div>
