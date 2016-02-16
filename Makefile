@@ -1,14 +1,8 @@
+include n.Makefile
+
 TEST_APP := "ft-article-branch-${CIRCLE_BUILD_NUM}"
 
-.PHONY: test
-
-install:
-	obt install --verbose
-
 test: verify unit-test
-
-verify:
-	nbt verify
 
 coverage:
 	export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; istanbul cover node_modules/.bin/_mocha test/server/ -- --recursive
@@ -30,9 +24,6 @@ build-production:
 
 watch:
 	nbt build --dev --watch
-
-clean:
-	git clean -fxd -e .idea
 
 deploy:
 	nbt deploy-hashed-assets
