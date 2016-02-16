@@ -67,7 +67,7 @@ describe('Metadata', () => {
 	});
 
 	context('when passed a query string with a topic to follow', () => {
-	
+
 		beforeEach(() => {
 			// Subject modifies the data given to it so always start fresh
 			fixtureData = JSON.parse(JSON.stringify(fixtureEsFound));

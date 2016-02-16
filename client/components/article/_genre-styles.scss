@@ -4,7 +4,7 @@ $brand-color: getColor('warm-1');
 
 	.article__header,
 	.follow-promo__header-logo,
- 	.next-up__intro__header {
+		.next-up__intro__header {
 		background: $brand-color;
 	}
 
@@ -29,9 +29,9 @@ $brand-color: getColor('warm-1');
 		}
 
 		.article__header-primary {
-			 @include oGridRespondTo(M) {
-				 padding-right: 150px;
-			 }
+				@include oGridRespondTo(M) {
+					padding-right: 150px;
+				}
 		}
 	}
 
@@ -73,5 +73,5 @@ $brand-color: getColor('warm-1');
 .article__header-headshot--image {
 	max-width: 100%;
 	display: block;
- 	margin-left: 8px;
+	margin-left: 8px;
 }
