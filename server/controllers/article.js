@@ -16,7 +16,7 @@ const articleBranding = require('ft-n-article-branding');
 
 function isCapiV1(article) {
 	return article.provenance.find(
-	 	source => source.includes('http://api.ft.com/content/items/v1/')
+			source => source.includes('http://api.ft.com/content/items/v1/')
 	);
 }
 
