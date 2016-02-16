@@ -49,6 +49,6 @@
     "optional": "es7.classProperties"
   },
   "engines": {
-    "node": "4.2.1"
+    "node": "4.3.0"
   }
 }
