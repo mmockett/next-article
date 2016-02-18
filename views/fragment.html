@@ -4,16 +4,14 @@
 	{{/if}}
 	{{> body}}
 	{{#if tags}}
-		<div
-			role="complementary"
-			class="article--tags__inline">
-			<p class="article--tags__title-inline">Latest stories on</p>
-			<ul class="article--tags__list-inline" data-trackable="tags">
+		<div role="complementary">
+			<p>Latest stories on</p>
+			<ul class="n-content-tags__list--inline" data-trackable="tags">
 				{{#each tags}}
-				<li class="article--tag__inline">
+				<li>
 					<a
 						href="{{url}}"
-						class="c-topic c-topic--link c-topic--list__horizontal"
+						class="n-content-tag n-content-tag--horizontal-list"
 						data-trackable="tag"
 						{{#if id}}data-concept-id="{{id}}"{{/if}}>{{name}}</a>
 				</li>

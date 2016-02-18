@@ -22,14 +22,14 @@
 							{{#if isSpecialReport}}
 								<p class="article__primary-theme">
 									Special Report:
-									<a href="/special-reports/{{primaryTag.id}}" class="c-topic c-topic--medium c-topic--with-follow c-topic--link" data-trackable="section-link" aria-label="posted in category {{primaryTag.name}}" data-concept-id="{{primaryTag.id}}">{{primaryTag.name}}</a>
+									<a href="/special-reports/{{primaryTag.id}}" class="n-content-tag n-content-tag--medium n-content-tag--with-follow" data-trackable="section-link" aria-label="posted in category {{primaryTag.name}}" data-concept-id="{{primaryTag.id}}">{{primaryTag.name}}</a>
 								</p>
 							{{else}}
 								{{#if primaryTag}}
 									<div class="article__primary-theme" data-trackable="primary-theme">
-										<a href="/stream/{{primaryTag.taxonomy}}Id/{{primaryTag.id}}" class="c-topic c-topic--medium c-topic--with-follow c-topic--link" data-trackable="section-link" aria-label="posted in category {{primaryTag.name}}" data-concept-id="{{primaryTag.id}}">{{primaryTag.name}}</a>
+										<a href="/stream/{{primaryTag.taxonomy}}Id/{{primaryTag.id}}" class="n-content-tag n-content-tag--medium n-content-tag--with-follow" data-trackable="section-link" aria-label="posted in category {{primaryTag.name}}" data-concept-id="{{primaryTag.id}}">{{primaryTag.name}}</a>
 										{{#ifAll @root.flags.myFtApi @root.flags.articleFollowPrimayTag}}
-											<span{{#if tagToFollow}} class="u-hide--L"{{/if}}>
+											<span{{#if tagToFollow}} class="tag-to-follow"{{/if}}>
 												{{>next-myft-ui/templates/follow version='3' conceptId=primaryTag.id name=primaryTag.prefLabel taxonomy=primaryTag.taxonomy}}
 											</span>
 										{{/ifAll}}
@@ -44,7 +44,7 @@
 							{{/if}}
 							{{#if designGenre}}
 								<div class="article__brand--wrapper">
-									<a class="article__brand--title c-topic" href={{designGenre.url}} data-trackable="brand">{{designGenre.name}}</a>
+									<a class="article__brand--title n-content-tag" href={{designGenre.url}} data-trackable="brand">{{designGenre.name}}</a>
 								</div>
 							{{/if}}
 						</div>
@@ -69,14 +69,13 @@
 						<aside
 							role="complementary"
 							data-o-grid-colspan="hide L3 Loffset1"
-							class="article__tags {{#if mainImageHtml}}article__tags--main-image{{/if}}">
-							<h3 class="article__tags__title">Topics mentioned in this article</h3>
-							<ul class="article__tags-list" data-trackable="tags">
+							class="n-content-tags__wrapper {{#if mainImageHtml}}n-content-tags__wrapper--main-image{{/if}}">
+							<h3 class="n-content-tags__title">Topics mentioned in this article</h3>
+							<ul class="n-content-tags__list" data-trackable="tags">
 								{{#each tags}}
-								<li class="article__tag">
+								<li class="n-content-tag__list-item--vertical">
 									<a
 										href="{{url}}"
-										class="c-topic c-topic--link c-topic--list"
 										data-trackable="tag"
 										{{#if id}}data-concept-id="{{id}}"{{/if}}>{{name}}</a>
 								</li>
@@ -118,7 +117,7 @@
 					{{> body bodyHtml=bodyHtml}}
 					{{> social location='bottom'}}
 					{{#if tagToFollow}}
-						<aside class="article__aside u-padding--none follow-promo" data-o-grid-colspan="12 Lhide" data-trackable="follow-promo-article" role="complementary" aria-hidden="true">
+						<aside class="article__aside n-content-u-padding--none follow-promo" data-o-grid-colspan="12 Lhide" data-trackable="follow-promo-article" role="complementary" aria-hidden="true">
 							{{>follow-promo  tag=tagToFollow buttonSize="medium"}}
 						</aside>
 					{{/if}}

@@ -94,35 +94,6 @@
 	}
 }
 
-.article__tags {
-	margin-top: 10px;
-	padding: 0 0 8px;
-	@include oGridRespondTo(L) {
-		align-self: flex-end;
-	}
-	&--main-image {
-		padding: 0;
-	}
-}
-.article__tags__title {
-	@include oTypographySans(xs);
-	margin: 0;
-	text-transform: uppercase;
-}
-.article__tags-list {
-	@include nLists();
-	margin: ($spacing-unit/2) 0 0;
-	@include oGridRespondTo($until: S) {
-		width: 100%;
-	}
-}
-.article__tag {
-	@include nListsItem($use-case: n-lists);
-	&:first-child {
-		border-top: 1px solid rgba(0, 0, 0, 0.25);
-	}
-}
-
 .article__main {
 	padding-top: 15px;
 }
@@ -132,92 +103,6 @@
 	audio,
 	video {
 		width: 100%;
-	}
-}
-
-//ARTICLE BODY ELEMENTS
-.article__body {
-	@include oTypographySans(m);
-	margin-bottom: 40px;
-
-	&--serif {
-		@include oTypographySerif(m);
-	}
-
-	> p {
-		margin: 0.3em 0 0.8em;
-	}
-
-	> *:first-child {
-		margin-top: 0;
-	}
-
-	a {
-		@media print {
-			&:after {
-				text-decoration: none;
-				word-break: break-all;
-				word-wrap: break-word;
-			}
-			&[href^='/']:after {
-				content: ' (http://next.ft.com' attr(href) ')';
-			}
-			&:not([href^='/']):after {
-				content: ' (' attr(href) ')';
-			}
-		}
-	}
-
-	strong {
-		font-weight: 600;
-	}
-
-	.article__copyright-notice {
-		@include oTypographySansSize(s);
-		margin-top: 40px;
-		clear: both;
-	}
-
-	@media print {
-		&:after {
-			content: 'Print a single copy of this article for personal use. Contact us if you wish to print more to distribute to others. © The Financial Times Ltd.';
-			display: block;
-			border-top: 1px solid #000000;
-			padding-top: 5px;
-		}
-	}
-}
-
-.article__video {
-	position: relative;
-	clear: left;
-	margin: 0 auto 1em;
-	max-width: 100%;
-
-	@media print {
-		display: none;
-	}
-}
-
-.article__video--brightcove {
-	width: 680px;
-}
-
-.article__video--youtube {
-	width: 560px;
-}
-
-.article__video-wrapper {
-	padding-top: 56.25%;
-
-	img,
-	video,
-	iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
 	}
 }
 
@@ -248,18 +133,6 @@
 }
 .o-gallery__control--next:hover:before {
 	@include nextIcon(arrow-right, #b0b0b0, 60);
-}
-
-.article__subhead {
-	@include oTypographySansBold(l);
-	margin-top: 50px;
-	margin-bottom: 20px;
-}
-.article__subhead--crosshead {
-	border-bottom: 1px solid black;
-}
-.article__subhead--standard {
-	@include oTypographySansBold(m);
 }
 
 .article__aside {
@@ -295,10 +168,19 @@
 	}
 }
 
+.article__myft-logo {
+	@include nextIcon(myft-bolder, getColorFor(title, text), 26);
+	width: 40px;
+}
+
+.tag-to-follow {
+	@include oGridRespondTo(L) {
+		display: none;
+	}
+}
+
+@import "n-content-body/main";
 @import 'aside';
 @import 'big-number';
-@import 'combo-components';
 @import 'genre-styles';
-@import 'images';
-@import 'quotes';
-@import 'table';
+@import 'pull-quotes';
