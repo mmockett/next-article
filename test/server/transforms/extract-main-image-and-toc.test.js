@@ -153,12 +153,12 @@ describe('Extracting Main Image and Table of Contents from Body', () => {
 		it('should extract the table of contents from the body', () => {
 			const $ = cheerio.load(
 				'<body>' +
-					'<div class="article__toc" data-trackable="table-of-contents">' +
-						'<h2 class="article__toc__title">In this article</h2>' +
-						'<ol class="article__toc__chapters ng-list-reset">' +
-							'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-1" data-trackable="toc">Economics</a></li>' +
-							'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-2" data-trackable="toc">Business</a></li>' +
-							'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-3" data-trackable="toc">Politics</a></li>' +
+					'<div class="table-of-contents" data-trackable="table-of-contents">' +
+						'<h2 class="table-of-contents__title">In this article</h2>' +
+						'<ol class="table-of-contents__chapters ng-list-reset">' +
+							'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-1" data-trackable="toc">Economics</a></li>' +
+							'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-2" data-trackable="toc">Business</a></li>' +
+							'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-3" data-trackable="toc">Politics</a></li>' +
 						'</ol>' +
 					'</div>' +
 					'<p>test test test</p>' +
@@ -166,12 +166,12 @@ describe('Extracting Main Image and Table of Contents from Body', () => {
 			);
 			const resultObject = mainImageAndToc($);
 			resultObject.tocHtml.should.equal(
-				'<div class="article__toc" data-trackable="table-of-contents">' +
-					'<h2 class="article__toc__title">In this article</h2>' +
-					'<ol class="article__toc__chapters ng-list-reset">' +
-						'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-1" data-trackable="toc">Economics</a></li>' +
-						'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-2" data-trackable="toc">Business</a></li>' +
-						'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-3" data-trackable="toc">Politics</a></li>' +
+				'<div class="table-of-contents" data-trackable="table-of-contents">' +
+					'<h2 class="table-of-contents__title">In this article</h2>' +
+					'<ol class="table-of-contents__chapters ng-list-reset">' +
+						'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-1" data-trackable="toc">Economics</a></li>' +
+						'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-2" data-trackable="toc">Business</a></li>' +
+						'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-3" data-trackable="toc">Politics</a></li>' +
 					'</ol>' +
 				'</div>'
 			);
@@ -185,12 +185,12 @@ describe('Extracting Main Image and Table of Contents from Body', () => {
 		it('should extract the table of contents before extracting the main image', () => {
 			const $ = cheerio.load(
 				'<body>' +
-					'<div class="article__toc" data-trackable="table-of-contents">' +
-						'<h2 class="article__toc__title">In this article</h2>' +
-						'<ol class="article__toc__chapters ng-list-reset">' +
-							'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-1" data-trackable="toc">Economics</a></li>' +
-							'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-2" data-trackable="toc">Business</a></li>' +
-							'<li class="article__toc__chapter"><a class="article__toc__link" href="#crosshead-3" data-trackable="toc">Politics</a></li>' +
+					'<div class="table-of-contents" data-trackable="table-of-contents">' +
+						'<h2 class="table-of-contents__title">In this article</h2>' +
+						'<ol class="table-of-contents__chapters ng-list-reset">' +
+							'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-1" data-trackable="toc">Economics</a></li>' +
+							'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-2" data-trackable="toc">Business</a></li>' +
+							'<li class="table-of-contents__chapter"><a class="table-of-contents__link" href="#crosshead-3" data-trackable="toc">Politics</a></li>' +
 						'</ol>' +
 					'</div>' +
 					'<figure class="n-content-image n-content-image--full" style="width:700px;">' +
