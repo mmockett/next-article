@@ -1,5 +1,6 @@
 {
   "name": "ft-next-article",
+  "version": "0.0.0",
   "private": true,
   "description": "Render a Next FT Article",
   "main": "app.js",
