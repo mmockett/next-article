@@ -1,10 +1,15 @@
-{{#if items.length}}
+{{#if articles.length}}
 	<div class="suggested-reads__container" role="group" aria-labelledBy="suggested-reads__title" >
-		<h3 id="suggested-reads__title" class="suggested-reads__title">Recommended:</h3>
-		{{#each items}}
-			<article class="suggested-reads__item">
-				<h4><a class="suggested-reads__item__headline" href="{{url}}" data-trackable="suggested-article">{{title}}</a></h4>
-			</article>
+		<h3 id="suggested-reads__title" class="suggested-reads__title">More on this topic:</h3>
+		<p class="suggested-reads__subheading">Suggestions below based on: <span>
+		{{#with topic}}
+			<a class="suggested-reads__item__topic" data-trackable="suggested-topic" href="{{url}}">{{name}}</a>
+		{{/with}}
+		</span></p>
+		{{#each articles}}
+		<article class="suggested-reads__item">
+			<h4><a class="suggested-reads__item__headline" href="{{url}}" data-trackable="suggested-article">{{title}}</a></h4>
+		</article>
 		{{/each}}
 	</div>
 {{/if}}
