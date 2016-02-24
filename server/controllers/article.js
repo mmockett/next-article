@@ -138,7 +138,7 @@ module.exports = function articleV3Controller(req, res, next, content) {
 			)
 		);
 
-		content.suggestedTopic = content.primaryTag;
+		content.readNextTopic = content.primaryTag;
 	}
 
 	if (req.get('FT-Labs-Gift') === 'GRANTED') {
