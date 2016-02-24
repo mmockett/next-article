@@ -27,7 +27,6 @@ $o-comments-is-silent: false;
 
 @import "next-myft-ui/main";
 @import "next-buttons/main";
-@import "n-myft-tray/main";
 @import "n-message-prompts/main";
 
 @import "helpers";
@@ -49,8 +48,6 @@ $o-comments-is-silent: false;
 @media print {
 	body > section,
 	.n-myft-ui,
-	.n-myft-tray__cta,
-	.n-myft-tray,
 	.o-header,
 	.article__tags,
 	.article__myft-tags-list,
