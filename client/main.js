@@ -8,7 +8,6 @@ require('next-js-setup').bootstrap(({flags}) => {
 	const prompts = require('n-message-prompts');
 	const oViewport = require('o-viewport');
 	const oDate = require('o-date');
-	const nMyFtTray = require('n-myft-tray');
 	const oExpander = require('o-expander');
 
 	const layout = require('n-layout');
@@ -57,10 +56,6 @@ require('next-js-setup').bootstrap(({flags}) => {
 			share.init();
 		}
 
-	}
-
-	if (flags.get('myFTTray')) {
-		nMyFtTray.init(flags);
 	}
 
 	nVideo.init({
