@@ -54,9 +54,4 @@ describe('Podcast Controller', () => {
 		expect(result.media).to.be.an('object');
 		expect(result.media).to.include.keys('mediaType', 'url');
 	});
-
-	it('provides DFP data from metadata', () => {
-		expect(result.dfp).to.include.keys('dfpSite', 'dfpZone');
-	});
-
 });
