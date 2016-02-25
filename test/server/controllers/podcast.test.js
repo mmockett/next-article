@@ -46,7 +46,7 @@ describe('Podcast Controller', () => {
 	});
 
 	it('provides related data for podcasts', () => {
-		let result = response._getRenderData();
+		result = response._getRenderData();
 
 		expect(result.externalLinks).to.be.an('object');
 		expect(result.externalLinks).to.include.keys('itunes', 'stitcher', 'audioboom');
