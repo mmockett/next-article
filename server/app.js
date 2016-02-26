@@ -22,6 +22,8 @@ require('./lib/ig-poller').start();
 require('./lib/blogs-access-poller').start();
 app.use(bodyParser.json());
 
+app.post('^/preview$', require('./controllers/preview'));
+
 // COMPLEX: Put access middleware before barrier middleware so that access can be cached by membership
 app.use('^/content/:id$', require('./controllers/access'));
 
