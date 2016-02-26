@@ -1,4 +1,6 @@
-# Next Article [![Circle CI](https://circleci.com/gh/Financial-Times/next-article/tree/master.svg?style=svg)](https://circleci.com/gh/Financial-Times/next-article/tree/master)
+# Next Article
+
+[![Circle CI](https://circleci.com/gh/Financial-Times/next-article/tree/master.svg?style=svg)](https://circleci.com/gh/Financial-Times/next-article) [![Coverage Status](https://coveralls.io/repos/github/Financial-Times/next-article/badge.svg?branch=master)](https://coveralls.io/github/Financial-Times/next-article?branch=master)
 
 ## Installation
 
