@@ -8,22 +8,22 @@ coverage:
 	export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; istanbul cover node_modules/.bin/_mocha test/server/ -- --recursive
 
 unit-test:
-	export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; mocha test/server/ --recursive --inline-diffs
+	$(NPM_BIN_ENV); export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; mocha test/server/ --recursive --inline-diffs
 
 test-debug:
 	@mocha --debug-brk --reporter spec -i test/server/
 
 run:
-	nbt run
+	$(NPM_BIN_ENV); nbt run
 
 build:
-	nbt build --dev
+	$(NPM_BIN_ENV); nbt build --dev
 
 build-production:
-	nbt build
+	$(NPM_BIN_ENV); nbt build
 
 watch:
-	nbt build --dev --watch
+	$(NPM_BIN_ENV); nbt build --dev --watch
 
 deploy:
 	nbt deploy-hashed-assets
