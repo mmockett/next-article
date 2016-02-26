@@ -1,4 +1,4 @@
-# Warning, don't edit this file, it's maintained on GitHub and updated by runing `make update-tools`
+# Warning, don't edit this file, it's maintained on GitHub and updated by running `make update-tools`
 # Submit PR's here: https://www.github.com/Financial-Times/n-makefile
 
 #
@@ -13,7 +13,8 @@
 
 # clean
 clea%:
-	@git clean -fxd -e .idea
+# HACK: Can't use -e option here because it's not supported by our Jenkins
+	@git clean -fxd
 	@$(DONE)
 
 # install
@@ -36,12 +37,15 @@ verif%: _verify_lintspaces _verify_eslint _verify_scss_lint
 # INSTALL SUB-TASKS
 
 # Regular npm install
-node_modules:
+node_modules: package.json
 	@if [ -e package.json ]; then $(NPM_INSTALL) && $(DONE); fi
+
+# package.json intentionally left blank, used to determine whether to allow npm install task to run
+package.json:
 
 # Regular bower install
 bower_components:
-	@if [ -e bower.json ]; then bower install --config.registry.search=http://registry.origami.ft.com --config.registry.search=https://bower.herokuapp.com && $(DONE); fi
+	@if [ -e bower.json ]; then $(NPM_BIN_ENV) && bower install --config.registry.search=http://registry.origami.ft.com --config.registry.search=https://bower.herokuapp.com && $(DONE); fi
 
 # node_modules for Lambda functions
 functions/%/node_modules:
@@ -79,7 +83,7 @@ GLOB = git ls-files $1
 NPM_INSTALL = npm prune --production && npm install
 JSON_GET_VALUE = grep $1 | head -n 1 | sed 's/[," ]//g' | cut -d : -f 2
 IS_GIT_IGNORED = grep -q $(if $1, $1, $@) .gitignore
-VERSION = v0.0.50
+VERSION = v0.0.54
 APP_NAME = $(shell cat package.json 2>/dev/null | $(call JSON_GET_VALUE,name))
 DONE = echo ✓ $@ done
 NPM_BIN_ENV = export PATH="$$PATH:node_modules/.bin"
