@@ -8,7 +8,7 @@ coverage:
 unit-test:
 	$(NPM_BIN_ENV); export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; mocha 'test/server/**/*.test.js' --inline-diffs
 
-+test:
+test:
 	make verify
 
 ifeq ($(CIRCLE_BRANCH),master)
