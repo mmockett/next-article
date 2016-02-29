@@ -50,4 +50,4 @@ provision:
 smoke:
 	nbt test-urls ${TEST_APP} --throttle 1;
 	# TODO: re-enable firefox
-	export TEST_APP=${TEST_APP}; nbt nightwatch test/browser/tests/* -e ie9,ie11,chrome,firefox,iphone6_plus,Android_Nexus7HD
+	export TEST_APP=${TEST_APP}; nbt nightwatch test/browser/tests/* -e ie9,edge,chrome,firefox,iphone6_plus,Android_Nexus7HD
