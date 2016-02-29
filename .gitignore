@@ -1,6 +1,7 @@
 .haikro-cache/
 node-linux-x64
 /node_modules/
+/coverage
 /bower_components/
 /__attic/
 /.sass-cache/

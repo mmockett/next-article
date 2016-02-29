@@ -2,16 +2,20 @@ include n.Makefile
 
 TEST_APP := "ft-article-branch-${CIRCLE_BUILD_NUM}"
 
-test: verify unit-test
-
 coverage:
-	export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; istanbul cover node_modules/.bin/_mocha test/server/ -- --recursive
+	export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; istanbul cover node_modules/.bin/_mocha --report lcovonly 'test/server/**/*.test.js'
 
 unit-test:
-	$(NPM_BIN_ENV); export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; mocha test/server/ --recursive --inline-diffs
+	$(NPM_BIN_ENV); export apikey=12345; export api2key=67890; export AWS_SIGNED_FETCH_DISABLE_DNS_RESOLUTION=true; export NODE_ENV=test; mocha 'test/server/**/*.test.js' --inline-diffs
 
-test-debug:
-	@mocha --debug-brk --reporter spec -i test/server/
++test:
+	make verify
+
+ifeq ($(CIRCLE_BRANCH),master)
+	make coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
+else
+	make unit-test
+endif
 
 run:
 	$(NPM_BIN_ENV); nbt run
