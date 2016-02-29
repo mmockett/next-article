@@ -70,9 +70,4 @@ describe('Article Controller', () => {
 		expect(result.dehydratedMetadata.moreOns[1].id).to.equal('NTg=-U2VjdGlvbnM=');
 		expect(result.dehydratedMetadata.package).to.be.an.instanceOf(Array);
 	});
-
-	it('provides DFP data from metadata', () => {
-		expect(result.dfp).to.include.keys('dfpSite', 'dfpZone');
-	});
-
 });

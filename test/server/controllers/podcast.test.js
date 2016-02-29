@@ -46,7 +46,7 @@ describe('Podcast Controller', () => {
 	});
 
 	it('provides related data for podcasts', () => {
-		let result = response._getRenderData();
+		result = response._getRenderData();
 
 		expect(result.externalLinks).to.be.an('object');
 		expect(result.externalLinks).to.include.keys('itunes', 'stitcher', 'audioboom');
@@ -54,9 +54,4 @@ describe('Podcast Controller', () => {
 		expect(result.media).to.be.an('object');
 		expect(result.media).to.include.keys('mediaType', 'url');
 	});
-
-	it('provides DFP data from metadata', () => {
-		expect(result.dfp).to.include.keys('dfpSite', 'dfpZone');
-	});
-
 });

@@ -2,7 +2,6 @@
 
 const logger = require('ft-next-express').logger;
 const cacheControlUtil = require('../utils/cache-control');
-const getDfpUtil = require('../utils/get-dfp');
 const addTagTitlePrefix = require('./article-helpers/tag-title-prefix');
 const barrierHelper = require('./article-helpers/barrier');
 const suggestedHelper = require('./article-helpers/suggested');
@@ -116,8 +115,6 @@ module.exports = function articleV3Controller(req, res, next, content) {
 		moreOns: content.moreOns,
 		package: content.storyPackage || [],
 	};
-
-	content.dfp = getDfpUtil(content.metadata);
 
 	if (res.locals.flags.openGraph) {
 		openGraphHelper(content);
