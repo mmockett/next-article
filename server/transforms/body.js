@@ -3,10 +3,17 @@
 const cheerio = require('cheerio');
 
 const replaceEllipses = require('./replace-ellipses');
+const copyrightNotice = require('./copyright-notice');
 const relativeLinks = require('./relative-links');
 const trimmedLinks = require('./trimmed-links');
+const dataTrackable = require('./data-trackable');
 const externalImages = require('./external-images');
-const copyrightNotice = require('./copyright-notice');
+const externalImagesEncoding = require('./external-images-encoding');
+const figureVariant = require('./figure-variant');
+const relatedBoxExpander = require('./related-box-expander');
+const tableOfContents = require('./table-of-contents');
+const videoPlaceholder = require('./video-placeholder');
+const videoBrightcove = require('./video-brightcove');
 const extractMainImageAndToc = require('./extract-main-image-and-toc');
 
 let transform = function ($, flags) {
@@ -33,9 +40,16 @@ module.exports = function (body, flags) {
 
 	let $ = transform(cheerio.load(body, { decodeEntities: false }), flags)
 		// other transforms
-		.with(externalImages)
 		.with(relativeLinks)
 		.with(trimmedLinks)
+		.with(dataTrackable)
+		.with(videoPlaceholder)
+		.with(videoBrightcove)
+		.with(figureVariant)
+		.with(externalImages)
+		.with(externalImagesEncoding)
+		.with(relatedBoxExpander)
+		.with(tableOfContents)
 		.get();
 
 	return extractMainImageAndToc($);

@@ -17,11 +17,11 @@ describe('Related Box', () => {
 		)
 		.then(transformedXml => {
 			transformedXml.should.equal(
-				'<aside class="n-content-box n-content-box--inline n-content-u-border--all" data-trackable="related-box" role="complementary">' +
-					'<div class="aside--headline n-content-u-margin--left-right"><a data-trackable="link-headline" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">9th Annual Property Summit</a></div>' +
-					'<div class="aside--image"><a data-trackable="link-image" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015"><div class="n-content-image__placeholder" style="padding-top:56.25%;">' +
-					'<img alt="Housing market economic dashboard" src="https://next-geebee.ft.com/image/v1/images/raw/http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480?source=next&amp;fit=scale-down&amp;width=470"></div></a></div>' +
-					'<div class="aside--content n-content-u-margin--left-right"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
+				'<aside class="n-content-related-box" role="complementary">' +
+					'<div class="n-content-related-box__headline"><a class="n-content-related-box__headline-link" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">9th Annual Property Summit</a></div>' +
+					'<a class="n-content-related-box__image-link" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">' +
+					'<img src="http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480" alt="Housing market economic dashboard" longdesc="" width="2048" height="1152"></a>' +
+					'<div class="n-content-related-box__content"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
 					'<p>This will bring together global investors, occupiers, lenders and developers to explore the opportunities available in the UK commercial property market</p></div>' +
 				'</aside>\n'
 			);
@@ -39,11 +39,10 @@ describe('Related Box', () => {
 		)
 		.then(transformedXml => {
 			transformedXml.should.equal(
-				'<aside class="n-content-box n-content-box--inline n-content-u-border--all" data-trackable="related-box" role="complementary">' +
-					'<div class="aside--headline n-content-u-margin--left-right">9th Annual Property Summit</div>' +
-					'<div class="aside--image"><div class="n-content-image__placeholder" style="padding-top:56.25%;">' +
-					'<img alt="Housing market economic dashboard" src="https://next-geebee.ft.com/image/v1/images/raw/http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480?source=next&amp;fit=scale-down&amp;width=470"></div></div>' +
-					'<div class="aside--content n-content-u-margin--left-right"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
+				'<aside class="n-content-related-box" role="complementary">' +
+					'<div class="n-content-related-box__headline">9th Annual Property Summit</div>' +
+					'<img src="http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480" alt="Housing market economic dashboard" longdesc="" width="2048" height="1152">' +
+					'<div class="n-content-related-box__content"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
 					'<p>This will bring together global investors, occupiers, lenders and developers to explore the opportunities available in the UK commercial property market</p></div>' +
 				'</aside>\n'
 			);
@@ -62,12 +61,12 @@ describe('Related Box', () => {
 		)
 		.then(transformedXml => {
 			transformedXml.should.equal(
-				'<aside class="n-content-box n-content-box--inline n-content-u-border--all" data-trackable="related-box" role="complementary">' +
-					'<div class="n-content-box__title"><div class="n-content-box__title-text n-content-u-background-color--pink">FT Property Summit 2015</div></div>' +
-					'<div class="aside--headline n-content-u-margin--left-right"><a data-trackable="link-headline" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">9th Annual Property Summit</a></div>' +
-					'<div class="aside--image"><a data-trackable="link-image" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015"><div class="n-content-image__placeholder" style="padding-top:56.25%;">' +
-					'<img alt="Housing market economic dashboard" src="https://next-geebee.ft.com/image/v1/images/raw/http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480?source=next&amp;fit=scale-down&amp;width=470"></div></a></div>' +
-					'<div class="aside--content n-content-u-margin--left-right"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
+				'<aside class="n-content-related-box" role="complementary">' +
+					'<h3 class="n-content-related-box__title"><span class="n-content-related-box__title-text">FT Property Summit 2015</span></h3>' +
+					'<div class="n-content-related-box__headline"><a class="n-content-related-box__headline-link" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">9th Annual Property Summit</a></div>' +
+					'<a class="n-content-related-box__image-link" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">' +
+					'<img src="http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480" alt="Housing market economic dashboard" longdesc="" width="2048" height="1152"></a>' +
+					'<div class="n-content-related-box__content"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
 					'<p>This will bring together global investors, occupiers, lenders and developers to explore the opportunities available in the UK commercial property market</p></div>' +
 				'</aside>\n'
 			);
@@ -86,12 +85,12 @@ describe('Related Box', () => {
 		)
 		.then(transformedXml => {
 			transformedXml.should.equal(
-				'<aside class="n-content-box n-content-box--inline n-content-u-border--all" data-trackable="related-box" role="complementary">' +
-					'<div class="n-content-box__title"><div class="n-content-box__title-text n-content-u-background-color--pink">FT Property Summit 2015</div></div>' +
-					'<div class="aside--headline n-content-u-margin--left-right"><a data-trackable="link-headline" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">9th Annual Property Summit</a></div>' +
-					'<div class="aside--image n-content-u-margin--left-right"><a data-trackable="link-image" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015"><div class="n-content-image__placeholder" style="padding-top:96px;">' +
-					'<img alt="Housing market economic dashboard" src="https://next-geebee.ft.com/image/v1/images/raw/http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480?source=next&amp;fit=scale-down&amp;width=167"></div></a></div>' +
-					'<div class="aside--content n-content-u-margin--left-right"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
+				'<aside class="n-content-related-box" role="complementary">' +
+					'<h3 class="n-content-related-box__title"><span class="n-content-related-box__title-text">FT Property Summit 2015</span></h3>' +
+					'<div class="n-content-related-box__headline"><a class="n-content-related-box__headline-link" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">9th Annual Property Summit</a></div>' +
+					'<a class="n-content-related-box__image-link" href="https://live.ft.com/Events/2015/FT-Property-Summit-2015">' +
+					'<img src="http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480" alt="Housing market economic dashboard" longdesc="" width="167" height="96"></a>' +
+					'<div class="n-content-related-box__content"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
 					'<p>This will bring together global investors, occupiers, lenders and developers to explore the opportunities available in the UK commercial property market</p></div>' +
 				'</aside>\n'
 			);
@@ -109,12 +108,12 @@ describe('Related Box', () => {
 		)
 		.then(transformedXml => {
 			transformedXml.should.equal(
-				'<aside class="n-content-box n-content-box--inline n-content-u-border--all" data-trackable="related-box" role="complementary">' +
-						'<div class="n-content-box__title"><div class="n-content-box__title-text n-content-u-background-color--pink">Related article</div></div>' +
-						'<div class="aside--image"><a data-trackable="link-image" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b"><div class="n-content-image__placeholder" style="padding-top:56.25%;">' +
-						'<img alt="Housing market economic dashboard" src="https://next-geebee.ft.com/image/v1/images/raw/http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480?source=next&amp;fit=scale-down&amp;width=470"></div></a></div>' +
-						'<div class="aside--headline n-content-u-margin--left-right"><a data-trackable="link-headline" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b">9th Annual Property Summit</a></div>' +
-						'<div class="aside--content n-content-u-margin--left-right"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
+				'<aside class="n-content-related-box" role="complementary">' +
+						'<h3 class="n-content-related-box__title"><span class="n-content-related-box__title-text">Related article</span></h3>' +
+						'<a class="n-content-related-box__image-link" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b">' +
+						'<img src="http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480" alt="Housing market economic dashboard" longdesc="" width="2048" height="1152"></a>' +
+						'<div class="n-content-related-box__headline"><a class="n-content-related-box__headline-link" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b">9th Annual Property Summit</a></div>' +
+						'<div class="n-content-related-box__content"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
 						'<p>This will bring together global investors, occupiers, lenders and developers to explore the opportunities available in the UK commercial property market</p></div>' +
 				'</aside>\n'
 			);
@@ -133,12 +132,12 @@ describe('Related Box', () => {
 		)
 		.then(transformedXml => {
 			transformedXml.should.equal(
-				'<aside class="n-content-box n-content-box--inline n-content-u-border--all" data-trackable="related-box" role="complementary">' +
-					'<div class="n-content-box__title"><div class="n-content-box__title-text n-content-u-background-color--pink">Bridge the generation gap</div></div>' +
-					'<div class="aside--image"><a data-trackable="link-image" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b"><div class="n-content-image__placeholder" style="padding-top:56.25%;">' +
-					'<img alt="Housing market economic dashboard" src="https://next-geebee.ft.com/image/v1/images/raw/http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480?source=next&amp;fit=scale-down&amp;width=470"></div></a></div>' +
-					'<div class="aside--headline n-content-u-margin--left-right"><a data-trackable="link-headline" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b">9th Annual Property Summit</a></div>' +
-					'<div class="aside--content n-content-u-margin--left-right"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
+				'<aside class="n-content-related-box" role="complementary">' +
+					'<h3 class="n-content-related-box__title"><span class="n-content-related-box__title-text">Bridge the generation gap</span></h3>' +
+					'<a class="n-content-related-box__image-link" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b">' +
+					'<img src="http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480" alt="Housing market economic dashboard" longdesc="" width="2048" height="1152"></a>' +
+					'<div class="n-content-related-box__headline"><a class="n-content-related-box__headline-link" href="/content/e539eab8-8c83-11e5-8be4-3506bf20cc2b">9th Annual Property Summit</a></div>' +
+					'<div class="n-content-related-box__content"><p>The Financial Times is delighted to present the 9th annual <strong>FT Property Summit</strong></p>' +
 					'<p>This will bring together global investors, occupiers, lenders and developers to explore the opportunities available in the UK commercial property market</p></div>' +
 				'</aside>\n'
 			);

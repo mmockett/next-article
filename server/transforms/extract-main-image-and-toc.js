@@ -2,7 +2,7 @@
 
 module.exports = function ($) {
 
-	const tocHtml = $.html($('.article__toc').remove());
+	const tocHtml = $.html($('.table-of-contents').remove());
 
 	// find image or slideshow in the body
 	const $firstMainImage = $('figure.n-content-image--full, figure.n-content-image--center, ft-slideshow').eq(0);

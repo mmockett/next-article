@@ -17,11 +17,10 @@ describe('Pull Quotes', function () {
 			)
 			.then(transformedXml => {
 				transformedXml.should.equal(
-					'<blockquote class="quote--pull aside--content n-content-box n-content-box--inline n-content-u-border--all">' +
-						'<div class="quote__quote-marks"></div>' +
-						'<div class="n-content-u-padding--left-right">' +
+					'<blockquote class="n-content-pullquote">' +
+						'<div class="n-content-pullquote__content">' +
 							'<p>Think left and think right and think low and think high. Oh, the thinks you can think up if only you try!</p>' +
-							'<footer class="quote__footer">Dr. Seuss</footer>' +
+							'<footer class="n-content-pullquote__footer">Dr. Seuss</footer>' +
 						'</div>' +
 					'</blockquote>\n'
 				);
@@ -39,9 +38,8 @@ describe('Pull Quotes', function () {
 			)
 			.then(transformedXml => {
 				transformedXml.should.equal(
-					'<blockquote class="quote--pull aside--content n-content-box n-content-box--inline n-content-u-border--all">' +
-						'<div class="quote__quote-marks"></div>' +
-						'<div class="n-content-u-padding--left-right">' +
+					'<blockquote class="n-content-pullquote">' +
+						'<div class="n-content-pullquote__content">' +
 							'<p>Think left and think right and think low and think high. Oh, the thinks you can think up if only you try!</p>' +
 						'</div>' +
 					'</blockquote>\n'
@@ -60,15 +58,12 @@ describe('Pull Quotes', function () {
 		)
 		.then(transformedXml => {
 			transformedXml.should.equal(
-				'<blockquote class="quote--pull aside--content n-content-box n-content-box--inline n-content-u-border--all n-content-u-padding--bottom-none">' +
-					'<div class="quote__quote-marks"></div>' +
-					'<div class="n-content-u-padding--left-right n-content-u-padding--bottom">' +
+				'<blockquote class="n-content-pullquote n-content-pullquote--with-image">' +
+					'<div class="n-content-pullquote__content">' +
 						'<p>Quote with master image</p>' +
-						'<footer class="quote__footer">Source with image</footer>' +
+						'<footer class="n-content-pullquote__footer">Source with image</footer>' +
 					'</div>' +
-					'<div class="aside--image"><div class="n-content-image__placeholder" style="padding-top:56.25%;">' +
-						'<img alt="Housing market economic dashboard" src="https://next-geebee.ft.com/image/v1/images/raw/http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480?source=next&amp;fit=scale-down&amp;width=470">' +
-					'</div></div>' +
+					'<img src="http://com.ft.imagepublish.prod.s3.amazonaws.com/aa4eec2e-1bfd-11e5-8201-cbdb03d71480" alt="Housing market economic dashboard" longdesc="" width="2048" height="1152">' +
 				'</blockquote>\n'
 			);
 		});

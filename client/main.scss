@@ -28,6 +28,7 @@ $o-comments-is-silent: false;
 @import "next-myft-ui/main";
 @import "next-buttons/main";
 @import "n-message-prompts/main";
+@import "n-content-body/main";
 
 @import "helpers";
 @import "components/article/main";
@@ -41,6 +42,7 @@ $o-comments-is-silent: false;
 @import "components/special-report/main";
 @import "components/suggested-reads/main";
 @import "components/read-next/main";
+@import "components/follow-promo/main";
 
 @import "components/labsshare/main";
 
@@ -54,6 +56,8 @@ $o-comments-is-silent: false;
 	.article__body > div,
 	.n-content-copyright,
 	.article__more-on,
+	.more-on--abtest_b--wrapper,
+	.more-ons-tags,
 	.article__comments,
 	.article__share,
 	.story-package,
@@ -62,6 +66,7 @@ $o-comments-is-silent: false;
 	.js-special-report,
 	.next-up__bottom__wrapper,
 	.more-on__topic--link,
+	.table-of-contents,
 	.pod {
 		display: none;
 	}
