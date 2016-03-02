@@ -1,6 +1,22 @@
+.suggested-reads--number {
+	counter-reset: articleIndex;
+}
+
 .suggested-reads__item {
 	margin-bottom: 20px;
 	padding: 0;
+	position: relative;
+	.suggested-reads--number & {
+		padding-left: 20px;
+		&:before {
+			@include oTypographySans(m);
+			color: getColor('pink-tint4');
+			counter-increment: articleIndex;
+			content: counter(articleIndex);
+			position: absolute;
+			left: 0;
+		}
+	}
 }
 
 .suggested-reads__container {
@@ -27,6 +43,7 @@
 
 .suggested-reads__subheading {
 	@include oTypographySans(s);
+	color: getColor('grey-tint5');
 	border-bottom: 1px solid getColor('warm-3');
 	margin-top: 0;
 	padding-bottom: 10px;
@@ -38,10 +55,21 @@
 
 .suggested-reads__item__headline--control {
 	@include nLinksHeadline();
+	color: getColor('grey-tint4');
+
 }
 
 .suggested-reads__item__headline--variant {
 
+}
+
+.suggested-reads__item__subheading {
+	display: none;
+	.suggested-reads--subhead & {
+		@include oTypographySans(s);
+		display: block;
+		color: getColor('grey-tint5');
+	}
 }
 
 .suggested-reads__item__topic {

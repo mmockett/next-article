@@ -1,5 +1,5 @@
 {{#if articles.length}}
-	<div class="suggested-reads__container" role="group" aria-labelledBy="suggested-reads__title" >
+	<div class="suggested-reads__container{{#if rhrShowSubhead}} suggested-reads--subhead{{/if}}{{#if rhrShowNumber}} suggested-reads--number{{/if}}" role="group" aria-labelledBy="suggested-reads__title" >
 		<h3 id="suggested-reads__title" class="suggested-reads__title">More on this topic:</h3>
 		<p class="suggested-reads__subheading">Suggestions below based on: <span>
 		{{#with topic}}
@@ -9,6 +9,7 @@
 		{{#each articles}}
 		<article class="suggested-reads__item">
 			<h4><a class="suggested-reads__item__headline suggested-reads__item__headline--{{#if @root.flags.articleRHRLinkStyle}}variant{{else}}control{{/if}}" href="{{url}}" data-trackable="suggested-article">{{title}}</a></h4>
+			<div class="suggested-reads__item__subheading">{{subheading}}</div>
 		</article>
 		{{/each}}
 	</div>
