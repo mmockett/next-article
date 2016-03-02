@@ -22,7 +22,6 @@
   "resolutions": {
     "o-ft-icons": "next",
     "o-fonts": "^2.0.0",
-    "o-typography": "^3.0.0",
-    "n-video": "^3.2.0"
+    "o-typography": "^3.0.0"
   }
 }
