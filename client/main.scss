@@ -13,11 +13,11 @@ $o-gallery-is-silent: false;
 // of o-comments/o-comment-ui will appear on the site.
 @import "o-assets/main";
 @include oAssetsSetModulePaths((
-	o-comments: '//build.origami.ft.com/v2/files/o-comments@2.2.0',
-	o-comment-ui: '//build.origami.ft.com/v2/files/o-comment-ui@2.1.0'
+	o-comments: "//build.origami.ft.com/v2/files/o-comments@2.2.0",
+	o-comment-ui: "//build.origami.ft.com/v2/files/o-comment-ui@2.1.0"
 ));
 $o-comments-is-silent: false;
-@import 'o-comments/main';
+@import "o-comments/main";
 
 @import "n-layout/main";
 
@@ -41,7 +41,6 @@ $o-comments-is-silent: false;
 @import "components/special-report/main";
 @import "components/suggested-reads/main";
 @import "components/read-next/main";
-
 @import "components/labsshare/main";
 
 // Print Styling
