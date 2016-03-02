@@ -13,14 +13,15 @@
     "o-comment-ui": "2.1.0",
     "o-comments": "2.2.0",
     "o-date": "^2.0.0",
-    "o-expander": "^2.0.0",
+    "o-expander": "^3.0.0",
     "o-gallery": "^1.6.1",
     "o-share": "^2.0.0",
     "superstore": "^2.0.1"
   },
   "resolutions": {
+    "o-expander": "^3.0.0",
     "o-fonts": "^2.0.0",
     "o-ft-icons": "next",
-    "o-typography": "^3.0.0"
+    "o-typography": "^3.1.0"
   }
 }
