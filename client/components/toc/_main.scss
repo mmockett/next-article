@@ -1,4 +1,4 @@
-.article__toc {
+.table-of-contents {
 	margin: 30px 0;
 
 	.article__body--toc & {
@@ -14,17 +14,23 @@
 		}
 	}
 }
-.article__toc__title {
+
+.table-of-contents__title {
 	@include oTypographySans(m);
 	color: #f57323;
 	background-color: oColorsGetPaletteColor('warm-2');
 	margin: 0;
 	padding: 3px 10px;
 }
-.article__toc__chapters {
+
+.table-of-contents__chapters {
 	counter-reset: chapters;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
-.article__toc__chapter {
+
+.table-of-contents__chapter {
 	@include oTypographySans(m);
 	border-bottom: 3px solid oColorsGetPaletteColor('warm-2');
 	color: oColorsGetPaletteColor('cold-2');
@@ -55,7 +61,8 @@
 		padding-bottom: 0;
 	}
 }
-.article__toc .article__toc__link {
+
+.table-of-contents__link {
 	border: 0;
 	color: oColorsGetPaletteColor('cold-2');
 	text-decoration: none;

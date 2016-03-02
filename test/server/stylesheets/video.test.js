@@ -20,11 +20,10 @@ describe('Video', () => {
 				.then(function (transformed) {
 					expect(transformed).to.equal(
 						'<div class="n-content-video n-content-video--brightcove">' +
-							'<div' +
-								' class="n-content-video__placeholder"' +
-								' data-n-component="n-video"' +
-								' data-n-video-source="brightcove"' +
-								' data-n-video-id="4084879507001"></div>' +
+						'<a' +
+							' data-embedded="true"' +
+							' data-asset-type="video"' +
+							' href="http://video.ft.com/4084879507001"></a>' +
 						'</div>\n'
 					);
 				});
@@ -43,8 +42,7 @@ describe('Video', () => {
 				.then(function (transformed) {
 					expect(transformed).to.equal(
 						'<a' +
-							' href="http://video.ft.com/4080875696001/A-FTSE-landmark-that-matters/Markets"' +
-							' data-trackable="link">' +
+							' href="http://video.ft.com/4080875696001/A-FTSE-landmark-that-matters/Markets">' +
 							'FTSE-All World index setting a record' +
 						'</a>\n'
 					);
@@ -64,11 +62,9 @@ describe('Video', () => {
 				.then(function (transformed) {
 					expect(transformed).to.equal(
 						'<div class="n-content-video n-content-video--youtube">' +
-							'<div class="n-content-video__placeholder">' +
-								'<iframe' +
-									' frameborder="0"' +
-									' src="https://www.youtube.com/embed/n2GTNK4VsXs"></iframe>' +
-							'</div>' +
+							'<iframe' +
+								' frameborder="0"' +
+								' src="https://www.youtube.com/embed/n2GTNK4VsXs"></iframe>' +
 						'</div>\n'
 					);
 				});
@@ -85,11 +81,9 @@ describe('Video', () => {
 				.then(function (transformed) {
 					expect(transformed).to.equal(
 						'<div class="n-content-video n-content-video--youtube">' +
-							'<div class="n-content-video__placeholder">' +
-								'<iframe' +
-									' frameborder="0"' +
-									' src="https://www.youtube.com/embed/n2GTNK4VsXs"></iframe>' +
-							'</div>' +
+							'<iframe' +
+								' frameborder="0"' +
+								' src="https://www.youtube.com/embed/n2GTNK4VsXs"></iframe>' +
 						'</div>\n'
 					);
 				});
@@ -112,14 +106,12 @@ describe('Video', () => {
 					expect(transformed).to.equal(
 						'<p>' +
 							'<a' +
-								' href="https://www.youtube.com/watch?v=n2GTNK4VsXs"' +
-								' data-trackable="link">' +
+								' href="https://www.youtube.com/watch?v=n2GTNK4VsXs">' +
 								'Hilary Benn\'s Impassioned Speech in a P' +
 							'</a>' +
 						'</p>' +
 						'<a' +
-							' href="https://www.youtube.com/watch?v=n2GTNK4VsXs"' +
-							' data-trackable="link">' +
+							' href="https://www.youtube.com/watch?v=n2GTNK4VsXs">' +
 							'Hilary Benn\'s Impassioned Speech' +
 						'</a>\n'
 					);

@@ -12,14 +12,13 @@
     <xsl:include href="big-number.xsl" />
     <xsl:include href="blockquotes.xsl" />
     <xsl:include href="external-image.xsl" />
+    <xsl:include href="info-box.xsl" />
     <xsl:include href="interactive-graphics.xsl" />
     <xsl:include href="links.xsl" />
     <xsl:include href="pull-quotes.xsl" />
     <xsl:include href="related-box.xsl" />
     <xsl:include href="slideshow.xsl" />
     <xsl:include href="subheaders.xsl" />
-    <xsl:include href="tables.xsl" />
-    <xsl:include href="toc.xsl" />
     <xsl:include href="video.xsl" />
 
 </xsl:stylesheet>

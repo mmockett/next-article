@@ -3,14 +3,7 @@
 
     <xsl:template match="a[starts-with(@href, 'http://video.ft.com/') and string-length(text()) = 0]">
         <div class="n-content-video n-content-video--brightcove">
-            <div class="n-content-video__placeholder"
-                data-n-component="n-video"
-                data-n-video-source="brightcove"
-                data-n-video-id="{substring-after(@href, 'http://video.ft.com/')}">
-                <xsl:if test="$useBrightcovePlayer">
-                    <xsl:attribute name="data-n-video-player">brightcove</xsl:attribute>
-                </xsl:if>
-            </div>
+          <xsl:copy-of select="current()" />
         </div>
     </xsl:template>
 
@@ -31,9 +24,7 @@
         </xsl:variable>
 
         <div class="n-content-video n-content-video--youtube">
-            <div class="n-content-video__placeholder">
-                <iframe frameborder="0" src="https://www.youtube.com/embed/{$videoId}"></iframe>
-            </div>
+          <iframe frameborder="0" src="https://www.youtube.com/embed/{$videoId}"></iframe>
         </div>
     </xsl:template>
 

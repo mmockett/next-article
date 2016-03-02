@@ -5,9 +5,9 @@
 const transform = require('./transform-helper');
 const expect = require('chai').expect;
 
-describe('Tables', () => {
+describe('Info box', () => {
 
-	it('translates tables with a single column into a promobox', () => {
+	it('translates tables with a single column into an info box', () => {
 		return transform(
 				'<html>' +
 					'<body>' +
@@ -22,9 +22,9 @@ describe('Tables', () => {
 			)
 			.then((transformedXml) => {
 				expect(transformedXml).to.equal(
-					'<aside class="promo-box n-content-box n-content-u-border--all n-content-u-padding--left-right">' +
-						'<h3 class="promo-box__headline">Lorem ipsum doler sit amet</h3>' +
-						'<div class="promo-box__content">' +
+					'<aside class="n-content-info-box">' +
+						'<h3 class="n-content-info-box__headline">Lorem ipsum doler sit amet</h3>' +
+						'<div class="n-content-info-box__content">' +
 							'<p>Ut enim ad minim veniam</p>' +
 							'<br>I am a text node!' +
 						'</div>' +

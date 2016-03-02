@@ -8,7 +8,6 @@
 	either refactor into the rest of the CSS or just delete it.
 */
 
-
 .more-on--abtest_b {
 
 	display: flex;
@@ -27,6 +26,11 @@
 		margin: 0 -10px;
 		padding: 0;
 		list-style: none;
+	}
+
+	.more-on {
+		@include nContentBox();
+		border: 1px solid getColor('warm-3');
 	}
 
 	.header__name {
@@ -316,4 +320,19 @@
 			@include nextIcon('arrow-right', getColor('cold-2'), 10);
 		}
 	}
+}
+
+.more-ons-tags {
+	@include nContentBox();
+	border: 1px solid getColor('warm-3');
+}
+
+.more-ons-tags__title {
+	@include nContentBoxTitle();
+	margin-bottom: 0;
+}
+
+.more-ons-tags__title-text {
+	@include nContentBoxTitleText();
+	background-color: getColorFor('page', 'background');
 }

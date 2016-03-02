@@ -5,40 +5,48 @@ var cheerio = require('cheerio');
 var externalImagesTransform = require('../../../server/transforms/external-images');
 require('chai').should();
 
-describe('External Images', function() {
+describe('External Images Transform', () => {
 
-	it('should double encode spaces in src of external image urls', function() {
-		var $ = cheerio.load(
-			'<body>' +
-				'<p>test test test</p>' +
-				'<figure class="article__image-wrapper article__inline-image ng-figure-reset ng-inline-element ng-pull-out">' +
-					'<img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http://clamo.ftdata.co.uk/files/2015-07/21/FT%20Dow%20Stock%20Moves%20IBM%20UTX%207-21-15.png?source=next&fit=scale-down&width=710">' +
-				'</figure>' +
-			'</body>'
-		);
-		var transformed$ = externalImagesTransform($);
-		transformed$.html().should.equal(
-			'<body>' +
-				'<p>test test test</p>' +
-				'<figure class="article__image-wrapper article__inline-image ng-figure-reset ng-inline-element ng-pull-out">' +
-					'<img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fclamo.ftdata.co.uk%2Ffiles%2F2015-07%2F21%2FFT%2520Dow%2520Stock%2520Moves%2520IBM%2520UTX%25207-21-15.png?source=next&amp;fit=scale-down&amp;width=710">' +
-				'</figure>' +
-			'</body>'
-		);
+	context('Placeholding the image', () => {
+
+		it('should add a placeholder based on aspect ratio', () => {
+			const $ = cheerio.load(
+				'<img src="http://my-image/image.jpg" width="800" height="600" alt="Lorem ipsum">'
+			);
+			const transformed$ = externalImagesTransform($);
+			transformed$.html().should.equal(
+				'<div style="max-width:100%;width:700px;margin-left: auto;margin-right: auto;">' +
+					'<div class="n-content-image__placeholder" style="padding-top:75%">' +
+						'<img src="https://next-geebee.ft.com/image/v1/images/raw/http://my-image/image.jpg?source=next&amp;fit=scale-down&amp;width=700" alt="Lorem ipsum">' +
+					'</div>' +
+				'</div>'
+			);
+		});
+
+		it('should not add a placeholder if the height and width and not known', () => {
+			const $ = cheerio.load(
+				'<img src="http://my-image/image.jpg" alt="Lorem ipsum">'
+			);
+			const transformed$ = externalImagesTransform($);
+			transformed$.html().should.equal(
+				'<img src="https://next-geebee.ft.com/image/v1/images/raw/http://my-image/image.jpg?source=next&amp;fit=scale-down&amp;width=700" alt="Lorem ipsum">'
+			);
+		});
+
 	});
 
-	it('should unescape html entites before encoding', function() {
-		var $ = cheerio.load(
-			'<body>' +
-				'<img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http://markets.ft.com/Research/API/ChartBuilder?t=equities&amp;p=eyJzeW1ib2wiOiIyNDQ1Nzl8NTcyMDA5IiwicmVnaW9uIjpudWxsLCJoZWlnaHQiOiIzMzgiLCJ3aWR0aCI6IjYwMCIsImxpbmVTdHlsZSI6ImxpbmUiLCJkdXJhdGlvbiI6IjUiLCJzdGFydERhdGUiOm51bGwsImVuZERhdGUiOm51bGwsInByaW1hcnlMYWJlbCI6IlJSLjpMU0UiLCJzZWNvbmRhcnlMYWJlbCI6IkZUU0UgMTAwIiwidGVydGlhcnlMYWJlbCI6bnVsbCwicXVhdGVybmFyeUxhYmVsIjpudWxsLCJpc01vYmlsZSI6ZmFsc2UsIlNob3dEaXNjbGFpbWVyIjp0cnVlLCJ1bml0IjoicHgifQ==?source=next&fit=scale-down&width=710">' +
-			'</body>'
-		);
-		var transformed$ = externalImagesTransform($);
-		transformed$.html().should.equal(
-			'<body>' +
-				'<img alt="" src="https://next-geebee.ft.com/image/v1/images/raw/http%3A%2F%2Fmarkets.ft.com%2FResearch%2FAPI%2FChartBuilder%3Ft%3Dequities%26p%3DeyJzeW1ib2wiOiIyNDQ1Nzl8NTcyMDA5IiwicmVnaW9uIjpudWxsLCJoZWlnaHQiOiIzMzgiLCJ3aWR0aCI6IjYwMCIsImxpbmVTdHlsZSI6ImxpbmUiLCJkdXJhdGlvbiI6IjUiLCJzdGFydERhdGUiOm51bGwsImVuZERhdGUiOm51bGwsInByaW1hcnlMYWJlbCI6IlJSLjpMU0UiLCJzZWNvbmRhcnlMYWJlbCI6IkZUU0UgMTAwIiwidGVydGlhcnlMYWJlbCI6bnVsbCwicXVhdGVybmFyeUxhYmVsIjpudWxsLCJpc01vYmlsZSI6ZmFsc2UsIlNob3dEaXNjbGFpbWVyIjp0cnVlLCJ1bml0IjoicHgifQ%3D%3D?source=next&amp;fit=scale-down&amp;width=710">' +
-			'</body>'
-		);
+	context('Using the image service', () => {
+
+		it('should transform the src to use the image service', () => {
+			const $ = cheerio.load(
+				'<img src="http://my-image/image.jpg" alt="Lorem ipsum">'
+			);
+			const transformed$ = externalImagesTransform($);
+			transformed$('img').attr('src').should.equal(
+				"https://next-geebee.ft.com/image/v1/images/raw/http://my-image/image.jpg?source=next&fit=scale-down&width=700"
+			);
+		});
+
 	});
 
 });

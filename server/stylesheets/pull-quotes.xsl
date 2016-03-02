@@ -3,23 +3,15 @@
 
     <xsl:template match="pull-quote">
 
-      <xsl:variable name="imagePaddingStyle">
+      <xsl:variable name="hasImage">
         <xsl:choose>
-          <xsl:when test="count(current()/pull-quote-image) > 0"> n-content-u-padding--bottom-none</xsl:when>
+          <xsl:when test="count(current()/pull-quote-image) > 0"> n-content-pullquote--with-image</xsl:when>
           <xsl:otherwise></xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
 
-      <xsl:variable name="contentPaddingStyle">
-        <xsl:choose>
-          <xsl:when test="count(current()/pull-quote-image) > 0"> n-content-u-padding--bottom</xsl:when>
-          <xsl:otherwise></xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
-
-      <blockquote class="quote--pull aside--content n-content-box n-content-box--inline n-content-u-border--all{$imagePaddingStyle}">
-        <div class="quote__quote-marks"></div>
-        <div class="n-content-u-padding--left-right{$contentPaddingStyle}">
+      <blockquote class="n-content-pullquote{$hasImage}">
+        <div class="n-content-pullquote__content">
           <p><xsl:value-of select="pull-quote-text" /></p>
           <xsl:apply-templates select="pull-quote-source" />
         </div>
@@ -29,7 +21,7 @@
 
     <xsl:template match="pull-quote-source">
       <xsl:if test="text()">
-        <footer class="quote__footer">
+        <footer class="n-content-pullquote__footer">
           <xsl:apply-templates select="text()" />
         </footer>
       </xsl:if>

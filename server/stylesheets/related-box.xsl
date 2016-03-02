@@ -3,29 +3,7 @@
 
   <xsl:template match="/html/body/ft-related | /html/body/promo-box">
 
-    <aside class="n-content-box n-content-box--inline n-content-u-border--all" data-trackable="related-box" role="complementary">
-
-      <xsl:variable name="expanderWordImage" select="55" />
-      <xsl:variable name="expanderWordNoImage" select="100" />
-      <xsl:variable name="expanderParaBreak" select="3" />
-      <xsl:variable name="wordCount" select=" string-length(normalize-space(current()/promo-intro))
-        - string-length(translate(normalize-space(current()/promo-intro),' ','')) +1" />
-      <xsl:variable name="contentParas" select="count(current()/promo-intro/p)" />
-      <xsl:variable name="imageCount" select="count(current()/promo-image)" />
-
-      <xsl:variable name="expander">
-        <xsl:choose>
-          <xsl:when test="($contentParas > $expanderParaBreak) and (($imageCount > 0 and $wordCount > $expanderWordImage) or ($imageCount = 0 and $wordCount > $expanderWordNoImage))">true</xsl:when>
-          <xsl:otherwise></xsl:otherwise>
-        </xsl:choose>
-      </xsl:variable>
-
-      <xsl:if test="$expander = 'true'">
-        <xsl:attribute name="data-o-component">o-expander</xsl:attribute>
-        <xsl:attribute name="data-o-expander-shrink-to">0</xsl:attribute>
-        <xsl:attribute name="data-o-expander-count-selector">.aside--content__extension</xsl:attribute>
-        <xsl:attribute name="class">n-content-box n-content-box--inline n-content-u-border--all o-expander</xsl:attribute>
-      </xsl:if>
+    <aside class="n-content-related-box" role="complementary">
 
       <xsl:variable name="type">
         <xsl:choose>
@@ -49,12 +27,12 @@
 
       <xsl:choose>
         <xsl:when test="$type = 'article' and count(current()/title) = 0">
-          <div class="n-content-box__title">
-            <div class="n-content-box__title-text n-content-u-background-color--pink">Related article</div>
-          </div>
+          <h3 class="n-content-related-box__title">
+            <span class="n-content-related-box__title-text">Related article</span>
+          </h3>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:apply-templates select="current()/title | current()/promo-title" mode="aside-title" />
+          <xsl:apply-templates select="current()/title | current()/promo-title" mode="related-box-title" />
         </xsl:otherwise>
       </xsl:choose>
 
@@ -64,7 +42,7 @@
         </xsl:apply-templates>
       </xsl:if>
 
-      <xsl:apply-templates select="current()/headline | current()/promo-headline" mode="aside-headline" >
+      <xsl:apply-templates select="current()/headline | current()/promo-headline" mode="related-box-headline" >
         <xsl:with-param name="linkurl" select="$linkurl" />
       </xsl:apply-templates>
 
@@ -74,30 +52,31 @@
         </xsl:apply-templates>
       </xsl:if>
 
-      <xsl:apply-templates select="current()/intro | current()/promo-intro" mode="aside-intro">
-          <xsl:with-param name="expander" select="$expander" />
-          <xsl:with-param name="expanderParaBreak" select="$expanderParaBreak" />
-      </xsl:apply-templates>
+      <xsl:if test="count(current()/intro) > 0 or count(current()/promo-intro) > 0">
+        <div class="n-content-related-box__content">
+          <xsl:apply-templates select="current()/intro/node() | current()/promo-intro/node()"/>
+        </div>
+      </xsl:if>
 
     </aside>
 
   </xsl:template>
 
-  <xsl:template match="title | promo-title" mode="aside-title">
-    <div class="n-content-box__title">
-      <div class="n-content-box__title-text n-content-u-background-color--pink">
+  <xsl:template match="title | promo-title" mode="related-box-title">
+    <h3 class="n-content-related-box__title">
+      <span class="n-content-related-box__title-text">
         <xsl:apply-templates select="current()" mode="extract-content" />
-      </div>
-    </div>
+      </span>
+    </h3>
   </xsl:template>
 
-  <xsl:template match="headline | promo-headline" mode="aside-headline">
+  <xsl:template match="headline | promo-headline" mode="related-box-headline">
     <xsl:param name="linkurl" />
 
-    <div class="aside--headline n-content-u-margin--left-right">
+    <div class="n-content-related-box__headline">
       <xsl:choose>
         <xsl:when test="$linkurl != ''">
-          <a data-trackable="link-headline" href="{$linkurl}">
+          <a class="n-content-related-box__headline-link" href="{$linkurl}">
             <xsl:apply-templates select="current()" mode="extract-content" />
           </a>
         </xsl:when>
@@ -124,59 +103,14 @@
 
   <xsl:template match="img" mode="aside-image-wrapper">
     <xsl:param name="linkurl" />
-    <div>
-      <xsl:attribute name="class">
-        <xsl:choose>
-          <xsl:when test="@width &lt; 470">aside--image n-content-u-margin--left-right</xsl:when>
-          <xsl:otherwise>aside--image</xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
-      <xsl:choose>
-        <xsl:when test="$linkurl !=''">
-          <a data-trackable="link-image" href="{$linkurl}">
-            <xsl:apply-templates select="current()" mode="aside-image" />
-          </a>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="current()" mode="aside-image" />
-        </xsl:otherwise>
-      </xsl:choose>
-    </div>
-  </xsl:template>
-
-  <xsl:template match="img" mode="aside-image">
-    <xsl:variable name="maxWidth" select="470" />
     <xsl:choose>
-      <xsl:when test="count(current()[@width][@height]) = 1">
-        <xsl:apply-templates select="current()" mode="placehold-image">
-            <xsl:with-param name="maxWidth" select="$maxWidth" />
-        </xsl:apply-templates>
+      <xsl:when test="$linkurl !=''">
+        <a class="n-content-related-box__image-link" href="{$linkurl}">
+          <xsl:copy-of select="current()" />
+        </a>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="current()" mode="dont-placehold-image">
-            <xsl:with-param name="maxWidth" select="$maxWidth" />
-        </xsl:apply-templates>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="intro | promo-intro" mode="aside-intro">
-    <xsl:param name="expander" />
-    <xsl:param name="expanderParaBreak" />
-    <xsl:choose>
-      <xsl:when test="$expander = 'true'">
-        <div class="aside--content n-content-u-margin--left-right o-expander__content">
-            <xsl:apply-templates select="current()/p[position() &lt;= $expanderParaBreak]"/>
-          <div class="aside--content__extension">
-            <xsl:apply-templates select="current()/p[position() > $expanderParaBreak]"/>
-          </div>
-        </div>
-        <button class="o-expander__toggle o--if-js n-content-u-margin--left-right" data-trackable="expander-toggle"></button>
-      </xsl:when>
-      <xsl:otherwise>
-        <div class="aside--content n-content-u-margin--left-right">
-            <xsl:apply-templates />
-        </div>
+        <xsl:copy-of select="current()" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -184,6 +118,5 @@
   <xsl:template match="title | promo-title" />
   <xsl:template match="headline | promo-headline" />
   <xsl:template match="ft-related/media | promo-image" />
-  <xsl:template match="intro | promo-intro" />
 
 </xsl:stylesheet>

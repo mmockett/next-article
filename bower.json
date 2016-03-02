@@ -2,7 +2,7 @@
   "name": "next-article",
   "dependencies": {
     "labs-o-share": "ftlabs/labs-o-share#^v3.1.0",
-    "n-content-body": "^1.0.2",
+    "n-content-body": "^2.0.0",
     "n-image": "^2.0.0",
     "n-layout": "^6.0.0",
     "n-message-prompts": "^2.0.0",
